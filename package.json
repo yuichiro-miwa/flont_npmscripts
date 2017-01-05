@@ -3,17 +3,33 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "config": {
+    "css": {
+      "dev": "dev/common/pcss",
+      "public": "public/common/css"
+    },
+    "js": {
+      "dev": "dev/common/js",
+      "public": "public/common/js"
+    },
+    "browserSyncOpt": "--server --serverStatic dist --files 'public/common/css/*.css, public/common/js/*.js, **/*.html'"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 2",
-    "serve": "browser-sync start --server --serveStatic dist --files 'public/common/css/*.css, public/common/js/*.js, **/*.html'",
-    "watch:js": "watchify --entry dev/common/js/main.js --transform babelify --outfile 'exorcist public/common/js/bundle.js.map > public/common/js/bundle.js' --debug --verbose",
-    "browserify": "browserify --entry dev/common/js/main.js --transform babelify > public/common/js/bundle.js",
-    "build:js": "mkdirp public/common/js && npm run browserify",
-    "build:css": "postcss --config .postcssrc.json --dir public/common/css dev/common/pcss/**.pcss",
+    "serve": "browser-sync start $npm_package_config_browserSyncOpt",
+    "browserify": "browserify --entry dev/common/js/**.js --transform babelify > public/common/js/build.js",
+    "prebuild": "npm run clean",
+    "build": "npm run build:css & npm run build:js",
+    "build:css": "postcss --config .postcssrc.json --dir $npm_package_config_css_public $npm_package_config_css_dev/*.css",
+    "build:js": "mkdirp $npm_package_config_js_public && npm run browserify",
+    "watch": "npm run serve & npm run watch:css & npm run watch:js",
     "watch:css": "npm run build:css -- --watch --map",
-    "lint:css": "stylelint 'dev/common/css/**'",
-    "lint:js": "xo dev/common/js/**",
-    "watch": "npm run serve && npm run watch:css && npm run watch:js"
+    "watch:js": "mkdirp $npm_package_config_js_public && watchify --entry $npm_package_config_js_dev/** --transform babelify ",
+    "clean": "npm run clean:css & npm run clean:js",
+    "clean:css": "rimraf $npm_package_config_css_public/*",
+    "clean:js": "rimraf $npm_package_config_js_public/*",
+    "lint:css": "stylelint $npm_package_config_css_dev/**/*css",
+    "lint:js": "xo $npm_package_config_js_dev"
   },
   "author": "",
   "license": "ISC",
@@ -31,6 +47,7 @@
     "postcss-custom-properties": "^5.0.1",
     "postcss-import": "^9.0.0",
     "postcss-nesting": "^2.3.1",
+    "rimraf": "^2.5.4",
     "stylelint": "^7.7.1",
     "stylelint-config-qiita": "^1.0.0",
     "watchify": "^3.8.0",
