@@ -1,5 +1,5 @@
 {
-  "name": "flont_webpack",
+  "name": "flont_npm_scripts",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,7 +8,7 @@
       "test/*.js"
     ],
     "source": [
-      "**/*.{js,jsx}",
+      "**/*.js",
       "!dist/**/*"
     ],
     "concurrency": 5,
@@ -69,7 +69,6 @@
     "stylelint": "^7.7.1",
     "stylelint-config-qiita": "^1.0.0",
     "watchify": "^3.8.0",
-    "webpack": "^1.14.0",
     "xo": "^0.17.1"
   }
 }
