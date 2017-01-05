@@ -9,9 +9,11 @@
     "watch:js": "watchify --entry dev/common/js/main.js --transform babelify --outfile 'exorcist public/common/js/bundle.js.map > public/common/js/bundle.js' --debug --verbose",
     "browserify": "browserify --entry dev/common/js/main.js --transform babelify > public/common/js/bundle.js",
     "build:js": "mkdirp public/common/js && npm run browserify",
-    "postcss": "postcss --config .postcssrc.json --dir public/common/css dev/common/pcss/**.pcss",
+    "build:css": "postcss --config .postcssrc.json --dir public/common/css dev/common/pcss/**.pcss",
+    "watch:css": "npm run build:css -- --watch --map",
     "lint:css": "stylelint 'dev/common/css/**'",
-    "lint:js": "xo dev/common/js/**"
+    "lint:js": "xo dev/common/js/**",
+    "watch": "npm run serve && npm run watch:css && npm run watch:js"
   },
   "author": "",
   "license": "ISC",
