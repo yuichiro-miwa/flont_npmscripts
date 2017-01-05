@@ -1,5 +1,8 @@
 {
   "use": [
-    "postcss-import"
+    "postcss-import",
+    "postcss-custom-properties",
+    "postcss-nesting",
+    "autoprefixer"
   ]
 }
