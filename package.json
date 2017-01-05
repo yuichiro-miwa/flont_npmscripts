@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 2",
+    "postcss": "postcss --config .postcssrc.json --dir public/common/css dev/common/pcss/**.pcss"
+
   },
   "author": "",
   "license": "ISC",
@@ -12,6 +14,8 @@
     "babel": "^6.5.2",
     "babel-preset-es2015": "^6.18.0",
     "babel-register": "^6.18.0",
+    "postcss-cli": "^2.6.0",
+    "postcss-import": "^9.0.0",
     "webpack": "^1.14.0"
   }
 }
