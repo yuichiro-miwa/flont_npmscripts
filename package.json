@@ -79,5 +79,9 @@
     "stylelint-config-qiita": "^1.0.0",
     "watchify": "^3.8.0",
     "xo": "^0.17.1"
-  }
+  },
+  "browserslist": [
+      "last 2 versions"
+    ]
+  },
 }
