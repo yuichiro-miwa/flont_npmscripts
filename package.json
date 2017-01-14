@@ -74,6 +74,7 @@
     "postcss-custom-properties": "^5.0.1",
     "postcss-import": "^9.0.0",
     "postcss-nesting": "^2.3.1",
+    "postcss-sorting": "^2.0.1",
     "rimraf": "^2.5.4",
     "stylelint": "^7.7.1",
     "stylelint-config-qiita": "^1.0.0",
@@ -81,7 +82,6 @@
     "xo": "^0.17.1"
   },
   "browserslist": [
-      "last 2 versions"
-    ]
-  },
+    "last 2 versions"
+  ]
 }

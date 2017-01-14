@@ -3,6 +3,7 @@
     "postcss-import",
     "postcss-custom-properties",
     "postcss-nesting",
-    "autoprefixer"
+    "autoprefixer",
+    "postcss-sorting"
   ]
 }
